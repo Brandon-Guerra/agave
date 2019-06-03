@@ -14,8 +14,11 @@ export default class SlackService {
   public processEvent(event: IEvent): string {
     const { links }: { links: ILink[] } = event;
     if (links[0].url.split('/')[3] === 'track') {
-      const spotifyUri = `spotify:track:${links[0].url.split('/').pop().split('?')[0]}`;
-      return spotifyUri;
+      const link = links[0].url.split('/').pop();
+      if (link) {
+        const uri = link.split('?')[0];
+        return `spotify:track:${uri}`;
+      }
     }
     return '';
   }

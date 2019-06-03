@@ -1,0 +1,11 @@
+.env
+!.example
+
+# Production Directories
+build/
+
+# Dependency Directories
+node_modules/
+
+# OS Files
+.DS_Store

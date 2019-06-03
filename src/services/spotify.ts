@@ -46,7 +46,7 @@ export default class SpotifyService {
 
     try {
       const response = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}${queryParams}`, { headers });
-      const uris = response.data.tracks.items.map(item => item.track.uri );
+      const uris = response.data.tracks.items.map((item: { track: { uri: any; }; }) => item.track.uri );
       return uris;
     } catch (error) {
       console.log(error);
